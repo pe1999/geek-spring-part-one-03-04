@@ -18,6 +18,6 @@
 
     <modules>
         <module>lesson-01-servlet-api</module>
+        <module>lesson-02-homework</module>
     </modules>
-
 </project>
