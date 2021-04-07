@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 @WebServlet(urlPatterns = "/user/*")
 public class UserServlet extends HttpServlet {
 
-    private static final Pattern PARAM_PATTERN = Pattern.compile("\\/(\\d+)$");
+    private static final Pattern PARAM_PATTERN = Pattern.compile("/(\\d+)$");
 
     private UserRepository userRepository;
 
