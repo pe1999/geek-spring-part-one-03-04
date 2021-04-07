@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(urlPatterns = "/user/*")
 public class UserServlet extends HttpServlet {
+
+    private static final Pattern PARAM_PATTERN = Pattern.compile("\\/(\\d+)$");
 
     private UserRepository userRepository;
 
@@ -34,31 +38,33 @@ public class UserServlet extends HttpServlet {
             for (User user : userRepository.findAll()) {
                 wr.println("<tr>");
                 wr.println("<td>" + user.getId() + "</td>");
-                wr.println("<td><a href=\"." + (req.getPathInfo() != null && req.getPathInfo().equals("/") ? "." : "") +
-                        "/user/" + user.getId() + "\">" + user.getUsername() + "</a></td>");
+                wr.println("<td><a href=\"" + req.getContextPath() + "/user/" + user.getId() + "\">" +
+                        user.getUsername() + "</a></td>");
                 wr.println("</tr>");
             }
             wr.println("</table>");
         } else {
 
-            Long id;
+            Matcher matcher = PARAM_PATTERN.matcher(req.getPathInfo());
 
-            try {
-                id = Long.valueOf(req.getPathInfo().substring(1));
-            } catch (NumberFormatException e) {
-                id = (long) -1;
-            }
-
-            User user = userRepository.findById(id);
-
-            if (user == null) {
+            if (!matcher.matches()) {
                 wr.println("<h1>Пользователь не существует</h1>" +
-                        (id == -1 ? "<p>Некорректный id пользователя: " : "Не существует пользователя с id = ")  +
+                        "<p>Некорректный id пользователя: " +
                         req.getPathInfo().substring(1) + "</p>");
+                resp.setStatus(400);
             } else {
-                wr.println("<h1>Карточка пользователя</h1>");
-                wr.println("<p>Имя пользователя: " + user.getUsername() + "</p>");
-                wr.println("<p>Id пользователя: " + user.getId() + "</p>");
+                long id = Long.parseLong(matcher.group(1));
+                User user = userRepository.findById(id);
+                if (user == null) {
+                    wr.println("<h1>Пользователь не существует</h1>" +
+                            "<p>Не существует пользователя с id = " +
+                            req.getPathInfo().substring(1) + "</p>");
+                    resp.setStatus(404);
+                } else {
+                    wr.println("<h1>Карточка пользователя</h1>");
+                    wr.println("<p>Имя пользователя: " + user.getUsername() + "</p>");
+                    wr.println("<p>Id пользователя: " + user.getId() + "</p>");
+                }
             }
         }
     }
