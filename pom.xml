@@ -14,9 +14,11 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring.version>5.3.3</spring.version>
     </properties>
 
     <modules>
         <module>lesson-01-servlet-api</module>
+        <module>lesson-02-spring-basic</module>
     </modules>
 </project>
