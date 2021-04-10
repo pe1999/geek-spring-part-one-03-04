@@ -1,5 +1,7 @@
 package ru.geekbrains;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 
 public class Product {
@@ -8,10 +10,13 @@ public class Product {
 
     private String productName;
 
+    private String productDescription;
+
     private BigDecimal productCost;
 
-    public Product(String productName, BigDecimal productCost) {
+    public Product(String productName, String productDescription, BigDecimal productCost) {
         this.productName = productName;
+        this.productDescription = productDescription;
         this.productCost = productCost;
     }
 
@@ -31,6 +36,13 @@ public class Product {
         this.productName = productName;
     }
 
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
     public BigDecimal getProductCost() {
         return productCost;
     }
