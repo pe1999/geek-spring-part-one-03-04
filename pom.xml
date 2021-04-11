@@ -20,5 +20,6 @@
     <modules>
         <module>lesson-01-servlet-api</module>
         <module>lesson-02-spring-basic</module>
+        <module>lesson-03-spring-mvc</module>
     </modules>
 </project>
