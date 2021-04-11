@@ -35,7 +35,7 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <a class="btn btn-primary" th:href="@{/user/new}">Add User</a>
+            <a class="btn btn-primary" th:href="@{/product/new}">Add User</a>
         </div>
 
         <div class="col-12">
@@ -48,12 +48,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="user : ${users}">
-                    <th scope="row" th:text="${user.id}">1</th>
-                    <td th:text="${user.username}">Alex</td>
+                <tr th:each="product : ${users}">
+                    <th scope="row" th:text="${product.id}">1</th>
+                    <td th:text="${product.username}">Alex</td>
                     <td>
-                        <a class="btn btn-success" th:href="@{/user/{id}(id = ${user.id})}"><i class="fas fa-edit"></i></a>
-                        <a class="btn btn-danger" th:href="@{/user/delete?id={id}(id = ${user.id})}"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger" th:href="@{/product/delete?id={id}(id = ${product.id})}"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 </tbody>

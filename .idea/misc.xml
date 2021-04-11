@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/lesson-01-servlet-api" />
+    <file type="web" url="file://$PROJECT_DIR$/lesson-03-homework" />
     <file type="web" url="file://$PROJECT_DIR$/lesson-03-spring-mvc" />
   </component>
   <component name="MavenProjectsManager">
@@ -11,6 +12,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/lesson-01-servlet-api/pom.xml" />
         <option value="$PROJECT_DIR$/lesson-03-spring-mvc/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson-03-homework/pom.xml" />
       </list>
     </option>
   </component>
