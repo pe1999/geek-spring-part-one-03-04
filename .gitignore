@@ -1,1 +1,4 @@
-/lesson-02-homework/target/
+.idea/
+!.idea/runConfigurations/
+target/
+*.iml
