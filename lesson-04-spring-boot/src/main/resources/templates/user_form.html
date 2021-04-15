@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head.html :: head">
+</head>
+
+<body>
+
+<nav th:replace="fragments/head.html :: navbar ('Users')">
+</nav>
+
+<div class="container">
+    <div class="row py-2">
+        <div class="col-12">
+            <form th:action="@{/user}" th:method="post" th:object="${user}">
+
+                <input type="hidden" th:field="*{id}">
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" th:field="*{username}" placeholder="Enter username">
+                    <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer.html :: scripts"></th:block>
+
+</body>

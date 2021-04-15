@@ -23,5 +23,6 @@
         <module>lesson-02-homework</module>
         <module>lesson-03-spring-mvc</module>
         <module>lesson-03-homework</module>
+        <module>lesson-04-spring-boot</module>
     </modules>
 </project>
