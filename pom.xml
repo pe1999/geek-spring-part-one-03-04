@@ -25,5 +25,6 @@
         <module>lesson-03-homework</module>
         <module>lesson-04-spring-boot</module>
         <module>lesson-04-spring-boot-hw</module>
+        <module>lesson-05-hibernate-hw</module>
     </modules>
 </project>

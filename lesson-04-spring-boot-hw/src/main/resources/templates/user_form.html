@@ -20,6 +20,12 @@
                     <label>Username</label>
                     <input type="text" class="form-control" th:field="*{username}" placeholder="Enter username">
                     <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                    <label>Password</label>
+                    <input type="password" class="form-control" th:field="*{password}" placeholder="Enter password">
+                    <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                    <label>Confirm password</label>
+                    <input type="password" class="form-control" th:field="*{passwordToConfirm}" placeholder="Enter password again">
+                    <p class="text-danger" th:if="${#fields.hasErrors('passwordToConfirm')}" th:errors="*{passwordToConfirm}"></p>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>

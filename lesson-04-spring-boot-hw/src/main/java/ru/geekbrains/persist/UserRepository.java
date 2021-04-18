@@ -18,9 +18,9 @@ public class UserRepository {
 
     @PostConstruct
     public void init() {
-        save(new User("User1"));
-        save(new User("User2"));
-        save(new User("User3"));
+        save(new User("User1", "123"));
+        save(new User("User2", "123"));
+        save(new User("User3", "123"));
     }
 
     public List<User> findAll() {

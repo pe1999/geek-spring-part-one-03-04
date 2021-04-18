@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.persist.User;
 import ru.geekbrains.persist.UserRepository;
@@ -42,6 +43,11 @@ public class UserController {
 
     @PostMapping
     public String submitForm(@Valid User user, BindingResult result) {
+        if (!user.getPassword().equals(user.getPasswordToConfirm())) {
+            result.addError(new FieldError("user", "passwordToConfirm",
+                    "Does not match the entered password"));
+        }
+
         if (result.hasErrors()) {
             return "user_form";
         }
