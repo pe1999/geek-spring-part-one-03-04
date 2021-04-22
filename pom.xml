@@ -27,5 +27,6 @@
         <module>lesson-04-spring-boot-hw</module>
         <module>lesson-05-hibernate-hw</module>
         <module>lesson-05-hibernate</module>
+        <module>lesson-06-hw</module>
     </modules>
 </project>
