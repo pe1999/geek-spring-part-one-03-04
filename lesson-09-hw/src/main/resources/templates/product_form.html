@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head.html :: head">
+</head>
+
+<body>
+
+<nav th:replace="fragments/head.html :: navbar ('Products')">
+</nav>
+
+<div class="container">
+    <div class="row py-2">
+        <div class="col-12">
+            <form th:action="@{/product}" th:method="post" th:object="${productDto}">
+
+                <input type="hidden" th:field="*{id}">
+
+                <div class="form-group">
+                    <label>Productname</label>
+                    <input type="text" class="form-control" th:field="*{productname}" placeholder="Enter productname">
+                    <p class="text-danger" th:if="${#fields.hasErrors('productname')}" th:errors="*{productname}"></p>
+                    <label>Cost</label>
+                    <input type="text" class="form-control" th:field="*{productCost}" placeholder="Enter cost">
+                    <p class="text-danger" th:if="${#fields.hasErrors('productCost')}" th:errors="*{productCost}"></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer.html :: scripts"></th:block>
+
+</body>
