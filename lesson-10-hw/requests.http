@@ -1,0 +1,92 @@
+GET http://89.108.70.121:8080/spring-mvc-app/api/v1/cart/all
+
+###
+
+GET http://89.108.70.121:8080/spring-mvc-app/api/v1/cart/2
+
+###
+
+GET http://89.108.70.121:8080/spring-mvc-app/api/v1/cart/user/4
+
+###
+
+POST http://89.108.70.121:8080/spring-mvc-app/api/v1/cart
+Content-Type: application/json
+
+{
+  "user_id": 4,
+  "product_id": 3,
+  "quantity": 71
+}
+
+###
+
+PUT http://89.108.70.121:8080/spring-mvc-app/api/v1/cart
+Content-Type: application/json
+
+{
+  "id": 3,
+  "user_id": 4,
+  "product_id": 2,
+  "quantity": 77
+}
+
+###
+
+DELETE http://89.108.70.121:8080/spring-mvc-app/api/v1/cart/2
+
+###
+
+DELETE http://89.108.70.121:8080/spring-mvc-app/api/v1/cart/user/4
+
+###
+
+GET http://89.108.70.121:8080/spring-mvc-app/api/v1/user/all
+
+###
+
+GET http://89.108.70.121:8080/spring-mvc-app/api/v1/user/filter?page=1&size=3&usernameFilter=&minAge=&maxAge=&sortColumn=age
+
+###
+
+POST http://89.108.70.121:8080/spring-mvc-app/api/v1/user
+Content-Type: application/json
+
+{
+  "username": "Rest user 5",
+  "password": "ddddd",
+  "age": 32
+}
+
+###
+
+GET http://89.108.70.121:8080/spring-mvc-app/api/v1/product/filter?productCostFilterMinStr=200&productCostFilterMaxStr=800
+
+###
+
+GET http://89.108.70.121:8080/spring-mvc-app/api/v1/product/all
+
+###
+
+POST http://89.108.70.121:8080/spring-mvc-app/api/v1/product
+Content-Type: application/json
+
+{
+  "productname": "Rest Product 5",
+  "productCost": 500
+}
+
+###
+
+PUT http://89.108.70.121:8080/spring-mvc-app/api/v1/product
+Content-Type: application/json
+
+{
+  "id": 4,
+  "productname": "NewProd333-Upd",
+  "productCost": 2001.00
+}
+
+###
+
+DELETE http://89.108.70.121:8080/spring-mvc-app/api/v1/product/7
