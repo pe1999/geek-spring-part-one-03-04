@@ -8,12 +8,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.geekbrains.NotFoundException;
-import ru.geekbrains.dto.UserDto;
 import ru.geekbrains.dto.FilterDto;
+import ru.geekbrains.dto.UserDto;
 import ru.geekbrains.persist.RoleRepository;
 import ru.geekbrains.service.UserService;
 
 import javax.validation.Valid;
+import java.util.HashSet;
 
 // http://localhost:8080/spring-mvc-app/user
 @Controller
@@ -51,6 +52,12 @@ public class UserController {
         return "user_form";
     }
 
+    @GetMapping("/register")
+    public String registerUserForm(Model model) {
+        model.addAttribute("user", new UserDto());
+        return "register_user_form";
+    }
+
     @PostMapping
     public String submitForm(@Valid @ModelAttribute("user") UserDto user, Model model, BindingResult result) {
         if (result.hasErrors()) {
@@ -72,6 +79,28 @@ public class UserController {
 
         userService.save(user);
         return "redirect:/user";
+    }
+
+    @PostMapping("/register")
+    public String submitRegForm(@Valid @ModelAttribute("user") UserDto user/*, Model model*/, BindingResult result) {
+        if (result.hasErrors()) {
+            return "register_user_form";
+        }
+
+        if (user.getAge() > 50) {
+            result.rejectValue("age","", "You are too old");
+            return "register_user_form";
+        }
+
+        if (!user.getPassword().equals(user.getMatchingPassword())) {
+            result.rejectValue("matchingPassword", "", "Password not match");
+            return "register_user_form";
+        }
+
+        user.setRoles(new HashSet<>());
+        user.getRoles().add(roleRepository.findById(1L).get());
+        userService.save(user);
+        return "redirect:/login";
     }
 
     @DeleteMapping("/{id}")
