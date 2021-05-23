@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head.html :: head">
+</head>
+
+<body>
+
+<nav th:replace="fragments/head.html :: navbar ('')">
+</nav>
+
+<div class="container">
+    <form th:action="@{/login_process}" th:method="post">
+        <div class="form-group">
+            <label for="username">Login</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter login">
+            <small th:if="${param.error != null}" class="form-text text-danger">Incorrect login or password</small>
+            <small th:if="${param.logout != null}" class="form-text text-success">Logout successful</small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a class="px-3" href="#">Register</a>
+    </form>
+</div>
+
+<th:block th:replace="fragments/footer.html :: scripts"></th:block>
+
+</body>
+</html>
